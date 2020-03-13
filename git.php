@@ -5,11 +5,11 @@
 	*	    Baixando master.zip do Git
 	*       Movendo arquivos para raiz
 	*       Deletando zip e pasta temporarias
-	*       Version: 1.0
+	*       Version: 1.1
 	*       Created By Gabriel da Luz
 	*/
 
-	$nameDiretorio = "Front-BackEnd-Escola-Vision-Website";
+	$nameDiretorio = "PEDMAP";
 	
 	$gitUrl = "https://github.com/gabrielweb7/".$nameDiretorio;
 
@@ -17,7 +17,14 @@
 	
 	file_put_contents($zipName, file_get_contents("{$gitUrl}/archive/{$zipName}") );
 	
+	if(filesize($zipName) == 0) { 
+		die('Este repositorio é publico ? :: '."{$gitUrl}/archive/{$zipName}");
+	}
+	
 	echo "Baixando Projeto Git: {$gitUrl} <br />";
+	
+	echo "Tamanho do arquivo: ".filesize($zipName);
+
 	
 	$unzip = new ZipArchive;
 
